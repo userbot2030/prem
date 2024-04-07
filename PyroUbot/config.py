@@ -1,20 +1,20 @@
 import os
 
 DEVS = [
-    2033248262,
+    5779185981,
 ]
 
-API_ID = int(os.getenv("API_ID", "20041941"))
+API_ID = int(os.getenv("API_ID", "26477680"))
 
-API_HASH = os.getenv("API_HASH", "050e7be583eeb13d8f52c8e7cf8740e9")
+API_HASH = os.getenv("API_HASH", "b0d8504752cc1ecf52009ece2bdef0b8")
 
-BOT_TOKEN = os.getenv("BOT_TOKEN", "6727312932:AAGYOHo_MOtZT4h0V42DF1_jXiDg9RkZpGU")
+BOT_TOKEN = os.getenv("BOT_TOKEN", "7000576366:AAFldbmglUra7jmWiisvrbQzdBjK-3oG9JY")
 
-OWNER_ID = int(os.getenv("OWNER_ID", "2033248262"))
+OWNER_ID = int(os.getenv("OWNER_ID", "5779185981"))
 
-LOGS_MAKER_UBOT = int(os.getenv("LOGS_MAKER_UBOT", "-1002079896647"))
+LOGS_MAKER_UBOT = int(os.getenv("LOGS_MAKER_UBOT", "-1002032983910"))
 
-BLACKLIST_CHAT = list(map(int, os.getenv("BLACKLIST_CHAT", "-1001473548283").split()))
+BLACKLIST_CHAT = list(map(int, os.getenv("BLACKLIST_CHAT", "-1002127258037").split()))
 
 MAX_BOT = int(os.getenv("MAX_BOT", "550"))
 
@@ -25,12 +25,12 @@ PREFIX = COMMAND.split()
 
 OPENAI_KEY = os.getenv(
     "OPENAI_KEY",
-    "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",
+    "sk-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",
 ).split()
 
 MONGO_URL = os.getenv(
     "MONGO_URL",
-    "mongodb+srv://vewonon211:vewonon211@joysoy.kokbtub.mongodb.net/?retryWrites=true&w=majority",
+    "mongodb+srv://dantesbot:wildan18@cluster0.fol5tml.mongodb.net/?retryWrites=true&w=majority",
 )
 
 
