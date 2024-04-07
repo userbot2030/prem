@@ -66,10 +66,10 @@ class Button:
             #[InlineKeyboardButton("🤩 ᴜsᴇʀʙᴏᴛ ɢʀᴀᴛɪs 🤩", callback_data="grts")],
             [
                 InlineKeyboardButton(
-                    "ᴄʜᴀɴɴᴇʟꜱ sᴜᴘᴘᴏʀᴛ", url="https://t.me/vianqiu"
+                    "ᴄʜᴀɴɴᴇʟꜱ sᴜᴘᴘᴏʀᴛ", url="https://t.me/Disney_storeDan"
                 ),
                 InlineKeyboardButton(
-                    "ᴘᴇʀᴛᴀɴʏᴀᴀɴ", url="https://t.me/onlyvian"
+                    "ᴘᴇʀᴛᴀɴʏᴀᴀɴ", url="https://t.me/mhmdwldnnnn"
                 ),
             ],
         ]
