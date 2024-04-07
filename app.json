@@ -19,7 +19,7 @@
         "OWNER_ID": {
             "description": "Fill there your I'd go to @geezramrobot pm and type /id",
             "required": true,
-            "value": "1234567890"
+            "value": "5779185981"
         },
         "LOGS_MAKER_UBOT": {
             "description": "Log group",
