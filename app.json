@@ -29,7 +29,7 @@
         "MAX_BOT": {
             "description": "maksimal",
             "required": true,
-            "value": "50"
+            "value": "550"
         },
         "BOT_TOKEN": {
             "description": "fill with your bot token get from @BotFather on telegram",
