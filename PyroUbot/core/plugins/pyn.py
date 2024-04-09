@@ -57,7 +57,7 @@ async def confirm_callback(client, callback_query):
                 f"<b>💬 sɪʟᴀʜᴋᴀɴ ᴋɪʀɪᴍᴋᴀɴ ʙᴜᴋᴛɪ sᴄʀᴇᴇɴsʜᴏᴛ ᴘᴇᴍʙᴀʏᴀʀᴀɴ ᴀɴᴅᴀ: {full_name}</b>",
             )
             buttons = [
-                [InlineKeyboardButton("👮‍♀️ ᴀᴅᴍɪɴ", url="https://t.me/thisvian")]
+                [InlineKeyboardButton("👮‍♀️ ᴀᴅᴍɪɴ", url="https://t.me/mhmdwldnnnn")]
             ]
             return await bot.send_message(
                 user_id,
@@ -72,7 +72,7 @@ async def confirm_callback(client, callback_query):
 
 async def tambah_or_kurang(client, callback_query):
     BULAN = int(callback_query.data.split()[1])
-    HARGA = 30
+    HARGA = 25
     QUERY = callback_query.data.split()[0]
     try:
         if QUERY == "kurang":
