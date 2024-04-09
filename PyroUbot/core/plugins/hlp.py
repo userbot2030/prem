@@ -51,13 +51,13 @@ async def menu_callback(client, callback_query):
     next_match = re.match(r"help_next\((.+?)\)", callback_query.data)
     back_match = re.match(r"help_back", callback_query.data)
     SH = await ubot.get_prefix(callback_query.from_user.id)
-    top_text = f"<b>ᴍᴇɴᴜ ɪɴʟɪɴᴇ <a href=tg://user?id={callback_query.from_user.id}>{callback_query.from_user.first_name} {callback_query.from_user.last_name or ''}</a>\n ᴘʀᴇғɪx: {' '.join(SH)}\n ᴛᴏᴛᴀʟ ᴍᴏᴅᴜʟᴇs: </b>"
+    top_text = f"<b>ᴍᴇɴᴜ ɪɴʟɪɴᴇ <a href=tg://user?id={callback_query.from_user.id}>{callback_query.from_user.first_name} {callback_query.from_user.last_name or ''}</a>\n ᴘʀᴇғɪx: {' '.join(SH)}\n ᴛᴏᴛᴀʟ ᴍᴏᴅᴜʟᴇs:43 </b>"
     if mod_match:
         module = (mod_match.group(1)).replace(" ", "_")
         text = HELP_COMMANDS[module].__HELP__.format(next((p) for p in SH))
         button = [[InlineKeyboardButton(" ᴋᴇᴍʙᴀʟɪ ", callback_data="help_back")]]
         await callback_query.edit_message_text(
-            text=text + "\n<b> ownermemek.t.me </b>",
+            text=text + "\n<b> Disney_storeDan </b>",
             reply_markup=InlineKeyboardMarkup(button),
             disable_web_page_preview=True,
         )
