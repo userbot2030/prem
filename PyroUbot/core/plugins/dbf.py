@@ -36,7 +36,7 @@ async def prem_user(client, message):
         expired = now + relativedelta(months=int(get_bulan))
         await set_expired_date(get_id, expired)
         await Tm.edit(
-            f"<b>•> ɪᴅ: {get_id}\n•> ɴᴀᴍᴇ: {user.mention}\n•> ᴍᴀsᴀ ᴀᴋᴛɪғ: {get_bulan} ʙᴜʟᴀɴ\n•> ᴋᴇᴛᴇʀᴀɴɢᴀɴ: 𝘗𝘳𝘦𝘮𝘪𝘶𝘮\n•> ʙʏ: HikariUserbot.t.me</b>"
+            f"<b>•> ɪᴅ: {get_id}\n•> ɴᴀᴍᴇ: {user.mention}\n•> ᴍᴀsᴀ ᴀᴋᴛɪғ: {get_bulan} ʙᴜʟᴀɴ\n•> ᴋᴇᴛᴇʀᴀɴɢᴀɴ: 𝘗𝘳𝘦𝘮𝘪𝘶𝘮\n•> ʙʏ: mhmdwldnnnn_bot</b>"
         )
     else:
         await Tm.delete()
