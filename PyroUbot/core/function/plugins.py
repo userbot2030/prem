@@ -29,7 +29,7 @@ async def loadPlugins():
     TM = await bot.send_message(
         LOGS_MAKER_UBOT,
         f"""
-<b>🤖 ᴜsᴇʀʙᴏᴛ ʙᴇʀʜᴀsɪʟ ᴅɪᴀᴋᴛɪғᴋᴀɴ</b>
+<b>🤖 ᴅᴀɴ ᴜsᴇʀʙᴏᴛ ʙᴇʀʜᴀsɪʟ ᴅɪᴀᴋᴛɪғᴋᴀɴ</b>
 <b>📕 ᴘʏᴛʜᴏɴ: {python_version()}</b>
 <b>📙 ᴘʏʀᴏɢʀᴀᴍ: {__version__}</b>
 <b>👤 ᴜsᴇʀ: {len(ubot._ubot)}</b>
