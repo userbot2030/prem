@@ -16,7 +16,7 @@ async def help_cmd(client, message):
         module = gen_font(get_arg(message), font["sᴍᴀʟʟᴄᴀᴘs"])
         if get_arg(message) in HELP_COMMANDS:
             await message.reply(
-                HELP_COMMANDS[get_arg(message)].__HELP__ + "\n<b> ownermemek.t.me </b>",
+                HELP_COMMANDS[get_arg(message)].__HELP__ + "\n<b> @Disney_storeDan </b>",
                 quote=True,
             )
         else:
@@ -57,7 +57,7 @@ async def menu_callback(client, callback_query):
         text = HELP_COMMANDS[module].__HELP__.format(next((p) for p in SH))
         button = [[InlineKeyboardButton(" ᴋᴇᴍʙᴀʟɪ ", callback_data="help_back")]]
         await callback_query.edit_message_text(
-            text=text + "\n<b> Disney_storeDan </b>",
+            text=text + "\n<b> © Dan-Userbot- @Disney_storeDan </b>",
             reply_markup=InlineKeyboardMarkup(button),
             disable_web_page_preview=True,
         )
