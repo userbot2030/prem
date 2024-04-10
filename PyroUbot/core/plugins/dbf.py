@@ -163,7 +163,7 @@ async def seles_user(client, message):
     added = await add_seles(user.id)
     if added:
         await add_prem(user.id)
-        await Tm.edit(f"<b>•> ɪᴅ: {get_id}\n•> ɴᴀᴍᴇ: {user.mention}\n•> ᴋᴇᴛᴇʀᴀɴɢᴀɴ: 𝘙𝘦𝘴𝘦𝘭𝘭𝘦𝘳\n•> ʙʏ: HikariUserbot.t.me</b>")
+        await Tm.edit(f"<b>•> ɪᴅ: {get_id}\n•> ɴᴀᴍᴇ: {user.mention}\n•> ᴋᴇᴛᴇʀᴀɴɢᴀɴ: 𝘙𝘦𝘴𝘦𝘭𝘭𝘦𝘳\n•> ʙʏ: @mhmdwldnnnn_bot</b>")
     else:
         await Tm.delete()
         await message.reply_text("ᴛᴇʀᴊᴀᴅɪ ᴋᴇsᴀʟᴀʜᴀɴ ʏᴀɴɢ ᴛɪᴅᴀᴋ ᴅɪᴋᴇᴛᴀʜᴜɪ")
