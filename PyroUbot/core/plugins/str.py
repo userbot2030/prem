@@ -15,19 +15,24 @@ async def ping_cmd(client, message):
     await client.invoke(Ping(ping_id=0))
     end = datetime.now()
     delta_ping = (end - start).microseconds / 1000
+    uptime = await _human_time_duration(int(uptime_sec))
     emot_1 = await get_vars(client.me.id, "EMOJI_PING")
-    emot_2 = await get_vars(client.me.id, "EMOJI_MENTION")
+    emot_2 = await get_vars(client.me.id, "EMOJI_UPTIME")
+    emot_3 = await get_vars(client.me.id, "EMOJI_MENTION")
     emot_pong = emot_1 if emot_1 else "5269563867305879894"
-    emot_mention = emot_2 if emot_2 else "6226371543065167427"
+    emot_uptime = emot_2 if emot_2 else "6226371543065167427"
+    emot_mention = emot_3 if emot_3 else "6226371543065167427"
     if client.me.is_premium:
         _ping = f"""
 <b><emoji id={emot_pong}>🏓</emoji>ᴘᴏɴɢ:</b> <code>{str(delta_ping).replace('.', ',')} ms</code>
-<b><emoji id={emot_mention}>👑</emoji>ᴍᴇɴᴛɪᴏɴ:</b> <code>@{bot.me.username}</code>
+<b><emoji id={emot_uptime}>👑</emoji>ᴜᴘᴛɪᴍᴇ:</b> <code>{uptime}</code>
+<b><emoji id={emot_mention}>👑</emoji>ᴍᴇɴᴛɪᴏɴ:</b> <code>@{client.me.mention}</code>
 """
     else:
         _ping = f"""
 <b>ᴘᴏɴɢ:</b> <code>{str(delta_ping).replace('.', ',')} ms</code>
-<b>ᴍᴇɴᴛɪᴏɴ:</b> <code>@{bot.me.username}</code>
+<b>ᴜᴘᴛɪᴍᴇ:</b> <code>{uptime}</code>
+<b>ᴍᴇɴᴛɪᴏɴ:</b> <code>@{client.me.mention}</code>
 """
     await message.reply(_ping)
 
@@ -76,5 +81,5 @@ async def start_cmd(client, message):
                 get = await client.get_messages(chat, id_copy)
                 await get.copy(message.chat.id, reply_to_message_id=message.id)
                 await send.delete()
-            except Exception as error:
+            except Exception as error: 
                 await send.edit(error)
