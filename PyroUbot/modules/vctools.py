@@ -31,9 +31,9 @@ async def _(client, message):
 
 @PY.UBOT("joinvc")
 async def _(client, message):
-    await join_vctools(client, message)
+    await join_os(client, message)
 
 
 @PY.UBOT("leavevc")
 async def _(client, message):
-    await leave_vctools(clien, message)
+    await turun_os(clien, message)
