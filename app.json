@@ -24,7 +24,7 @@
         "LOGS_MAKER_UBOT": {
             "description": "Log group",
             "required": true,
-            "value": "1234567890"
+            "value": "-1002032983910"
         },
         "MAX_BOT": {
             "description": "maksimal",
