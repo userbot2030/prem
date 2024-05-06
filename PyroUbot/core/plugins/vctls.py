@@ -81,7 +81,7 @@ async def stop_vctools(client, message):
 async def join_os(client, message):
     kk = message.from_user.id
     ky = await message.reply("<code>ᴍᴇᴍᴘʀᴏꜱᴇꜱ....</code>")
-    chat_id = message.command[1] if len(message.command) > 1 else message.chat.titel
+    chat_id = message.command[1] if len(message.command) > 1 else message.chat.id
     with suppress(ValueError):
         chat_id = message.chat.title
     try:
@@ -98,7 +98,7 @@ async def join_os(client, message):
 
 async def turun_os(client, message):
     ky = await message.reply("<code>ᴍᴇᴍᴘʀᴏꜱᴇꜱ....</code>")
-    chat_id = message.command[1] if len(message.command) > 1 else message.chat.titel
+    chat_id = message.command[1] if len(message.command) > 1 else message.chat.id
     with suppress(ValueError):
         chat_id = message.chat.title
     try:
