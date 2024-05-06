@@ -15,7 +15,7 @@ async def ping_cmd(client, message):
     await client.invoke(Ping(ping_id=0))
     end = datetime.now()
     delta_ping = (end - start).microseconds / 1000
-    uptime = await _human_time_duration(int(uptime_sec))
+    date_time  =(end - start).miscrosecnds / 1000
     emot_1 = await get_vars(client.me.id, "EMOJI_PING")
     emot_2 = await get_vars(client.me.id, "EMOJI_UPTIME")
     emot_3 = await get_vars(client.me.id, "EMOJI_MENTION")
