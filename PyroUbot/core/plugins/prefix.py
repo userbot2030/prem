@@ -33,7 +33,7 @@ async def change_emot(client, message):
         if len(message.command) < 3:
             return await msg.edit("<b>ᴛᴏʟᴏɴɢ ᴍᴀsᴜᴋᴋᴀɴ ǫᴜᴇʀʏ ᴅᴀɴ ᴠᴀʟᴇᴜ ɴʏᴀ</b>")
 
-        query_mapping = {"pong": "EMOJI_PING", "mention": "EMOJI_MENTION", "uptime": "EMOJI_UPTIME"}
+        query_mapping = {"pong": "EMOJI_PING", "mention": "EMOJI_MENTION"}
         command, mapping, value = message.command[:3]
 
         if mapping.lower() in query_mapping:
