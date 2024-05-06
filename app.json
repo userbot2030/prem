@@ -1,5 +1,5 @@
 {
-    "name": "Melvan",
+    "name": "Noy Kalem",
     "description": "UserBot !!!.",
     "logo": "https://telegra.ph/file/c78bb1efdeed38ee16eb2.png",
     "keywords": ["telegram", "userbot", "Geez", "pyrogram"],
@@ -19,7 +19,7 @@
         "OWNER_ID": {
             "description": "Fill there your I'd go to @geezramrobot pm and type /id",
             "required": true,
-            "value": "5779185981"
+            "value": "5286927579"
         },
         "LOGS_MAKER_UBOT": {
             "description": "Log group",
