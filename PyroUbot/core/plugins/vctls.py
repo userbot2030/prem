@@ -81,11 +81,11 @@ async def stop_vctools(client, message):
 async def join_os(client, message):
     kk = message.from_user.id
     ky = await message.reply("<code>ᴍᴇᴍᴘʀᴏꜱᴇꜱ....</code>")
-    chat_id = message.command[1] if len(message.command) > 1 else message.chat.title
+    chat_id = message.command[1] if len(message.command) > 1 else message.chat.id
     with suppress(ValueError):
-        chat_id = int(chat_id)
+        chat_id = message.chat.title
     try:
-        await client.vc.start(chat_id)
+        await client.vc.start(True)
 
     except Exception as e:
         return await ky.edit(f"ERROR: {e}")
@@ -98,9 +98,9 @@ async def join_os(client, message):
 
 async def turun_os(client, message):
     ky = await message.reply("<code>ᴍᴇᴍᴘʀᴏꜱᴇꜱ....</code>")
-    chat_id = message.command[1] if len(message.command) > 1 else message.chat.title
+    chat_id = message.command[1] if len(message.command) > 1 else message.chat.id
     with suppress(ValueError):
-        chat_id = int(chat_id)
+        chat_id = message.chat.title
     try:
       
         await client.vc.stop()
