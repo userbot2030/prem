@@ -30,7 +30,7 @@ async def get_group_call(
     await eor(message, f"ɴᴏ ɢʀᴏᴜᴘ ᴄᴀʟʟ ꜰᴏᴜɴᴅ {err_msg}")
     return False
 
-
+@PY.UBOT("startvc")
 async def start_vctools(client, message):
     flags = " ".join(message.command[1:])
     ky = await message.reply("<code>ᴍᴇᴍᴘʀᴏꜱᴇꜱ....</code>")
@@ -64,7 +64,7 @@ async def start_vctools(client, message):
         await ky.edit(f"<b>INFO:</b> `{e}`")
 
 
-
+@PY.UBOT("stopvc")
 async def stop_vctools(client, message):
     ky = await message.reply("<code>ᴍᴇᴍᴘʀᴏꜱᴇꜱ....</code>")
     message.chat.id
@@ -77,8 +77,8 @@ async def stop_vctools(client, message):
         f"<b>ᴏʙʀᴏʟᴀɴ ꜱᴜᴀʀᴀ ᴅɪᴀᴋʜɪʀɪ</b>\n<b>ᴄʜᴀᴛ : </b><code>{message.chat.title}</code>"
     )
 
-
-async def join_os(client, message):
+@PY.UBOT("joinvc")
+async def join_vctools(client, message):
     ky = message.from_user.id
     ky = await message.reply("<code>ᴍᴇᴍᴘʀᴏꜱᴇꜱ....</code>")
     chat_id = message.command[1] if len(message.command) > 1 else message.chat.id
@@ -90,13 +90,13 @@ async def join_os(client, message):
     except Exception as e:
         return await ky.edit(f"ERROR: {e}")
     await ky.edit(
-        f"<b>ʙᴇʀʜᴀꜱɪʟ ᴊᴏɪɴ ᴠᴏɪᴄᴇ ᴄʜᴀᴛ</b>\n<b>ᴄʜᴀᴛ : </b><code>{message.chat.id}</code>"
+        f"<b>ʙᴇʀʜᴀꜱɪʟ ᴊᴏɪɴ ᴠᴏɪᴄᴇ ᴄʜᴀᴛ</b>\n<b>ᴄʜᴀᴛ : </b><code>{message.chat.title}</code>"
     )
     await client.group_call.set_is_mute(True)
 
 
-
-async def turun_os(client, message):
+@PY.UBOT("leavevc")
+async def leave_vctools(client, message):
     ky = await message.reply("<code>ᴍᴇᴍᴘʀᴏꜱᴇꜱ....</code>")
     chat_id = message.command[1] if len(message.command) > 1 else message.chat.id
     with suppress(ValueError):
@@ -107,7 +107,7 @@ async def turun_os(client, message):
 
     except Exception as e:
         return await ky.edit(f"<b>ERROR:</b> {e}")
-    msg = "<b>ʙᴇʀʜᴀꜱɪʟ ᴍᴇɴɪɴɢɢᴀʟᴋᴀɴ ᴠᴏɪᴄᴇ ᴄʜᴀᴛ</b>\n"
+    msg = f"<b>ʙᴇʀʜᴀꜱɪʟ ᴍᴇɴɪɴɢɢᴀʟᴋᴀɴ ᴠᴏɪᴄᴇ ᴄʜᴀᴛ</b>\n<b>ᴄʜᴀᴛ : </b><code>{message.chat.title}</code>
     if chat_id:
         msg += f"<b>ᴄʜᴀᴛ : </b><code>{message.chat.id}</code>"
     await ky.edit(msg)
