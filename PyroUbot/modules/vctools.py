@@ -26,7 +26,7 @@ async def _(client, message):
 
 @PY.UBOT("stopvc")
 async def _(client, message):
-    await stop_vctools(client, message)
+    await stopvc_vctools(client, message)
 
 
 @PY.UBOT("joinvc")
