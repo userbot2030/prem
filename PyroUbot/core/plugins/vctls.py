@@ -79,7 +79,6 @@ async def stop_vctools(client, message):
 
 @PY.UBOT("joinvc")
 async def join_vctools(client, message):
-    ky = message.from_user.id
     ky = await message.reply("<code>ᴍᴇᴍᴘʀᴏꜱᴇꜱ....</code>")
     chat_id = message.command[1] if len(message.command) > 1 else message.chat.id
     with suppress(ValueError):
