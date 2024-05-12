@@ -107,7 +107,7 @@ async def leave_vctools(client, message):
 
     except Exception as e:
         return await ky.edit(f"<b>ERROR:</b> {e}")
-    msg = f"<b>ʙᴇʀʜᴀꜱɪʟ ᴍᴇɴɪɴɢɢᴀʟᴋᴀɴ ᴠᴏɪᴄᴇ ᴄʜᴀᴛ</b>\n<b>ᴄʜᴀᴛ : </b><code>{message.chat.title}</code>
+    msg = "<b>ʙᴇʀʜᴀꜱɪʟ ᴍᴇɴɪɴɢɢᴀʟᴋᴀɴ ᴠᴏɪᴄᴇ ᴄʜᴀᴛ</b>\n"
     if chat_id:
-        msg += f"<b>ᴄʜᴀᴛ : </b><code>{message.chat.id}</code>"
+        msg += f"<b>ᴄʜᴀᴛ : </b><code>{message.chat.title}</code>"
     await ky.edit(msg)
