@@ -26,14 +26,14 @@ async def _(client, message):
 
 @PY.UBOT("stopvc")
 async def _(client, message):
-    await stopvc_vctools(client, message)
+    await stop_vctools(client, message)
 
 
 @PY.UBOT("joinvc")
 async def _(client, message):
-    await joinvc_vctools(client, message)
+    await join_vctools(client, message)
 
 
 @PY.UBOT("leavevc")
 async def _(client, message):
-    await leavevc_vctools(clien, message)
+    await leave_vctools(clien, message)
