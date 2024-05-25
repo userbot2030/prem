@@ -1,7 +1,6 @@
 from PyroUbot.core.plugins.pmper import *
 from PyroUbot.core.plugins.lck import *
 from PyroUbot.core.plugins.pler import *
-from PyroUbot.core.plugins.vctls import *
 from PyroUbot.core.plugins.gtb import *
 from PyroUbot.core.plugins.prefix import *
 from PyroUbot.core.plugins.join import *
