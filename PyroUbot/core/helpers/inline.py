@@ -63,7 +63,7 @@ class Button:
                     "ʙᴜᴀᴛ ᴜsᴇʀʙᴏᴛ", callback_data="memek"
                 ),
             ],
-            #[InlineKeyboardButton("🤩 ᴜsᴇʀʙᴏᴛ ɢʀᴀᴛɪs 🤩", callback_data="grts")],
+            [InlineKeyboardButton("🤩 ᴜsᴇʀʙᴏᴛ ɢʀᴀᴛɪs 🤩", callback_data="grts")],
             [
                 InlineKeyboardButton(
                     "ᴄʜᴀɴɴᴇʟꜱ sᴜᴘᴘᴏʀᴛ", url="https://t.me/Disney_storeDan"
