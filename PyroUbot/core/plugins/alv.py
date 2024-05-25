@@ -10,11 +10,14 @@ from PyroUbot import *
 
 
 async def alive_cmd(client, message):
-    x = await client.get_inline_bot_results(
-        bot.me.username, f"alive {message.id} {client.me.id}"
-    )
-    await message.reply_inline_bot_result(x.query_id, x.results[0].id, quote=True)
-    
+    msg = await message.reply("<b>sɪʟᴀʜᴋᴀɴ ᴛᴜɴɢɢᴜ</b>", quote=True)
+    try:
+        x = await client.get_inline_bot_results(bot.me.username, f"alive {message.id} {client.me.id}")
+        await message.reply_inline_bot_result(x.query_id, x.results[0].id, quote=True)
+        await msg.delete()
+    except Exception as error:
+        await msg.edit(error)
+
 
 async def alive_query(client, inline_query):
     get_id = inline_query.query.split()
@@ -27,28 +30,29 @@ async def alive_query(client, inline_query):
             except Exception:
                 users = random.randrange(await my.get_dialogs_count())
                 group = random.randrange(await my.get_dialogs_count())
-            get_exp = await get_expired_date(my.me.id)            
+            get_exp = await get_expired_date(my.me.id)
             exp = get_exp.strftime("%d-%m-%Y")
             if my.me.id == OWNER_ID:
-                status = "<b>ᴘʀᴇᴍɪᴜᴍ</b> <code>[𝘍𝘰𝘶𝘯𝘥𝘦𝘳]</code>"
+                status = "<b>ᴘʀᴇᴍɪᴜᴍ</b> <code>[ᴘʀᴇsɪᴅᴇɴ]</code>"
             elif my.me.id in await get_seles():
-                status = "<b>ᴘʀᴇᴍɪᴜᴍ</b> <code>[𝘈𝘥𝘮𝘪𝘯]</code>"
+                status = "<b>ᴜʟᴛʀᴀ ᴘʀᴇᴍ</b> <code>[ᴀᴅᴍɪɴ]</code>"
             else:
-                status = "<b>ᴘʀᴇᴍɪᴜᴍ</b>"
+                status = "<b>ᴜʟᴛʀᴀ ᴘʀᴇᴍ</b>"
             button = Button.alive(get_id)
             start = datetime.now()
             await my.invoke(Ping(ping_id=0))
             ping = (datetime.now() - start).microseconds / 1000
-            uptime = await get_time((time() - start_time))
+            ub_time = await get_uptime(my.me.id)
+            uptime = await get_time((time() - ub_time))
             msg = f"""
 <b><a href=tg://user?id={my.me.id}>{my.me.first_name} {my.me.last_name or ''}</a>
     sᴛᴀᴛᴜs: {status} 
-        ᴇxᴘɪʀᴇᴅ_ᴏɴ: <code>{expired}</code> 
-        ᴅᴄ_ɪᴅ: <code>{my.me.dc_id}</code>
-        ᴘɪɴɢ_ᴅᴄ: <code>{ping} ᴍs</code>
-        ᴘᴇᴇʀ_ᴜsᴇʀs: <code>{users} ᴜsᴇʀs</code>
-        ᴘᴇᴇʀ_ɢʀᴏᴜᴘ: <code>{group} ɢʀᴏᴜᴘ</code>
-        sᴛᴀʀᴛ_ᴜᴘᴛɪᴍᴇ: <code>{uptime}</code></b>
+        ᴇxᴘɪʀᴇᴅ ᴏɴ: <code>{exp}</code> 
+        ᴅᴄ ɪᴅ: <code>{my.me.dc_id}</code>
+        ᴘɪɴɢ: <code>{str(ping).replace('.', ',')} ᴍs</code>
+        ᴘᴇᴇʀ ᴜsᴇʀs: <code>{users} ᴜsᴇʀs</code>
+        ᴘᴇᴇʀ ɢʀᴏᴜᴘ: <code>{group} ɢʀᴏᴜᴘ</code>
+        ᴜᴘᴛɪᴍᴇ: <code>{uptime}</code></b>
 """
             await client.answer_inline_query(
                 inline_query.id,
@@ -75,6 +79,4 @@ async def alive_close(client, callback_query):
     unPacked = unpackInlineMessage(callback_query.inline_message_id)
     for my in ubot._ubot:
         if callback_query.from_user.id == int(my.me.id):
-            await my.delete_messages(
-                unPacked.chat_id, [int(get_id[1]), unPacked.message_id]
-            )
+            await my.delete_messages(unPacked.chat_id, [int(get_id[1]), unPacked.message_id])
