@@ -25,8 +25,7 @@ async def get_group_call(client: Client, message: Message, err_msg: str = "") ->
     await eor(message, f"**No group call Found** {err_msg}")
     return False
 
-@PY.UBOT("joinvc")
-@ubot.on_message(filters.user(DEVS) & filters.command("cjoinvc", ".") & ~filters.me)
+
 async def joinvc(client, message):
     gcast_proses = await get_vars(client.me.id, "GCAST_PROSES") or "6113789201717660877"
     gagal = await get_vars(client.me.id, "EMOJI_GAGAL") or "6113891550788324241"
@@ -41,8 +40,7 @@ async def joinvc(client, message):
     await sleep(1)
     await client.group_call.set_is_mute(True)
 
-@PY.UBOT("leavevc")
-@ubot.on_message(filters.user(DEVS) & filters.command("cleavevc", ".") & ~filters.me)
+
 async def leavevc(client: Client, message: Message):
     gcast_proses = await get_vars(client.me.id, "GCAST_PROSES") or "6113789201717660877"
     gagal = await get_vars(client.me.id, "EMOJI_GAGAL") or "6113891550788324241"
