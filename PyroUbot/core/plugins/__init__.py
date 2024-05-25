@@ -43,3 +43,4 @@ from PyroUbot.core.plugins.ytp import *
 from PyroUbot.core.plugins.zbs import *
 from PyroUbot.core.plugins.tr import *
 from PyroUbot.core.plugins.gratis import *
+from PyroUbot.core.plugins.vctls import *
