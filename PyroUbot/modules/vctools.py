@@ -1,7 +1,8 @@
 from PyroUbot import *
 
+
 __MODULE__ = "vctools"
-__HELP__ = """
+__HELP__ =f"""
 <b>『 ʙᴀɴᴛᴜᴀɴ ᴜɴᴛᴜᴋ ᴠᴄᴛᴏᴏʟs 』</b>
 
   <b>❑ ᴘᴇʀɪɴᴛᴀʜ:</b> <code>startvc</code>
