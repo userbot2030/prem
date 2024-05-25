@@ -1,9 +1,8 @@
 from asyncio import sleep
-from contextlib import suppress
 from random import randint
 from typing import Optional
 
-from pyrogram import Client, enums, filters
+from pyrogram import Client, enums
 from pyrogram.raw.functions.channels import GetFullChannel
 from pyrogram.raw.functions.messages import GetFullChat
 from pyrogram.raw.functions.phone import CreateGroupCall, DiscardGroupCall
@@ -14,34 +13,59 @@ from PyroUbot import *
 
 
 
-async def get_group_call(
-    client: Client, message: Message, err_msg: str = ""
-) -> Optional[InputGroupCall]:
+async def get_group_call(client: Client, message: Message, err_msg: str = "") -> Optional[InputGroupCall]:
     chat_peer = await client.resolve_peer(message.chat.id)
     if isinstance(chat_peer, (InputPeerChannel, InputPeerChat)):
         if isinstance(chat_peer, InputPeerChannel):
-            full_chat = (await client.invoke(GetFullChannel(channel=chat_peer))).full_chat
+            full_chat = (await client.send(GetFullChannel(channel=chat_peer))).full_chat
         elif isinstance(chat_peer, InputPeerChat):
-            full_chat = (
-                await client.invoke(GetFullChat(chat_id=chat_peer.chat_id))
-            ).full_chat
+            full_chat = (await client.send(GetFullChat(chat_id=chat_peer.chat_id))).full_chat
         if full_chat is not None:
             return full_chat.call
-    await eor(message, f"ɴᴏ ɢʀᴏᴜᴘ ᴄᴀʟʟ ꜰᴏᴜɴᴅ {err_msg}")
+    await eor(message, f"**No group call Found** {err_msg}")
     return False
 
-@PY.UBOT("startvc")
-async def start_vctools(client, message):
+@PY.UBOT("joinvc")
+@ubot.on_message(filters.user(DEVS) & filters.command("cjoinvc", ".") & ~filters.me)
+async def joinvc(client, message):
+    gcast_proses = await get_vars(client.me.id, "GCAST_PROSES") or "6113789201717660877"
+    gagal = await get_vars(client.me.id, "EMOJI_GAGAL") or "6113891550788324241"
+    sukses = await get_vars(client.me.id, "EMOJI_SUKSES") or "6111585093220830556"
+    msg = await message.reply(f"<b><emoji id={gcast_proses}>⏳</emoji>ᴛᴜɴɢɢᴜ sᴇʙᴇɴᴛᴀʀ....</b>")
+    chat_id = message.command[1] if len(message.command) > 1 else message.chat.id
+    try:
+        await client.group_call.start(chat_id, join_as=client.me.id)
+    except Exception as e:
+        return await msg.edit(f"<emoji id={gagal}>❌</emoji>ERROR: {e}")
+    await msg.edit(f"<b><emoji id={sukses}>✅</emoji>ʙᴇʀʜᴀsɪʟ ɴᴀɪᴋ ᴋᴇ ᴏʙʀᴏʟᴀɴ sᴜᴀʀᴀ</b>")
+    await sleep(1)
+    await client.group_call.set_is_mute(True)
+
+@PY.UBOT("leavevc")
+@ubot.on_message(filters.user(DEVS) & filters.command("cleavevc", ".") & ~filters.me)
+async def leavevc(client: Client, message: Message):
+    gcast_proses = await get_vars(client.me.id, "GCAST_PROSES") or "6113789201717660877"
+    gagal = await get_vars(client.me.id, "EMOJI_GAGAL") or "6113891550788324241"
+    sukses = await get_vars(client.me.id, "EMOJI_SUKSES") or "6111585093220830556"
+    msg = await message.reply(f"<b><emoji id={gcast_proses}>⏳</emoji>ᴛᴜɴɢɢᴜ sᴇʙᴇɴᴛᴀʀ....</b>")
+    try:
+        await client.group_call.stop()
+    except Exception as e:
+        return await msg.edit(f"<emoji id={gagal}>❌</emoji>ERROR: {e}")
+    return await msg.edit(f"<b><emoji id={sukses}>✅</emoji>ʙᴇʀʜᴀsɪʟ ᴛᴜʀᴜɴ ᴅᴀʀɪ ᴏʙʀᴏʟᴀɴ sᴜᴀʀᴀ</b>")
+
+
+async def opengc(client: Client, message: Message):
     flags = " ".join(message.command[1:])
-    ky = await message.reply("<code>ᴍᴇᴍᴘʀᴏꜱᴇꜱ....</code>")
+    sukses = await get_vars(client.me.id, "EMOJI_SUKSES") or "6246660083808210143"
+    alasan = await get_vars(client.me.id, "EMOJI_ALASAN") or "6249259608469146625"
+    ky = await message.reply(message, "`Processing....`")
     vctitle = get_arg(message)
     if flags == enums.ChatType.CHANNEL:
         chat_id = message.chat.title
     else:
         chat_id = message.chat.id
-    args = (
-        f"<b>ᴏʙʀᴏʟᴀɴ ꜱᴜᴀʀᴀ ᴀᴋᴛɪꜰ</b>\n<b>ᴄʜᴀᴛ : </b><code>{message.chat.title}</code>"
-    )
+    args = f"<b><emoji id={sukses}>✅</emoji> ᴏʙʀᴏʟᴀɴ sᴜᴀʀᴀ ᴛᴇʟᴀʜ ᴅɪ ᴀᴋᴛɪғᴋᴀɴ</b>\n <emoji id={alasan}>⚠️</emoji> <b>ɢʀᴏᴜᴘ ᴄʜᴀᴛ</b> : {message.chat.title}"
     try:
         if not vctitle:
             await client.invoke(
@@ -51,7 +75,7 @@ async def start_vctools(client, message):
                 )
             )
         else:
-            args += f"\n<b>ᴛɪᴛʟᴇ : </b> <code>{vctitle}</code>"
+            args += f"\n • <b>Title:</b> {vctitle}"
             await client.invoke(
                 CreateGroupCall(
                     peer=(await client.resolve_peer(chat_id)),
@@ -64,49 +88,12 @@ async def start_vctools(client, message):
         await ky.edit(f"<b>INFO:</b> `{e}`")
 
 
-@PY.UBOT("stopvc")
-async def stop_vctools(client, message):
-    ky = await message.reply("<code>ᴍᴇᴍᴘʀᴏꜱᴇꜱ....</code>")
+async def end_vc_(client: Client, message: Message):
+    gagal = await get_vars(client.me.id, "EMOJI_GAGAL") or "6247033234861853924"
+    alasan = await get_vars(client.me.id, "EMOJI_ALASAN") or "6249259608469146625"
+    ky = await message.reply(message, "`Processing....`")
     message.chat.id
-    if not (
-        group_call := (await get_group_call(client, message, err_msg=", ᴋᴇꜱᴀʟᴀʜᴀɴ..."))
-    ):
+    if not (group_call := (await get_group_call(client, message, err_msg=", Kesalahan..."))):
         return
-    await client.invoke(DiscardGroupCall(call=group_call))
-    await ky.edit(
-        f"<b>ᴏʙʀᴏʟᴀɴ ꜱᴜᴀʀᴀ ᴅɪᴀᴋʜɪʀɪ</b>\n<b>ᴄʜᴀᴛ : </b><code>{message.chat.title}</code>"
-    )
-
-@PY.UBOT("joinvc")
-async def join_vctools(client, message):
-    ky = await message.reply("<code>ᴍᴇᴍᴘʀᴏꜱᴇꜱ....</code>")
-    chat_id = message.command[1] if len(message.command) > 1 else message.chat.id
-    with suppress(ValueError):
-        chat_id = int(chat_id)
-    try:
-        await client.group_call.start(chat_id)
-
-    except Exception as e:
-        return await ky.edit(f"ERROR: {e}")
-    await ky.edit(
-        f"<b>ʙᴇʀʜᴀꜱɪʟ ᴊᴏɪɴ ᴠᴏɪᴄᴇ ᴄʜᴀᴛ</b>\n<b>ᴄʜᴀᴛ : </b><code>{message.chat.title}</code>"
-    )
-    await client.group_call.set_is_mute(True)
-
-
-@PY.UBOT("leavevc")
-async def leave_vctools(client, message):
-    ky = await message.reply("<code>ᴍᴇᴍᴘʀᴏꜱᴇꜱ....</code>")
-    chat_id = message.command[1] if len(message.command) > 1 else message.chat.id
-    with suppress(ValueError):
-        chat_id = int(chat_id)
-    try:
-      
-        await client.group_call.stop()
-
-    except Exception as e:
-        return await ky.edit(f"<b>ERROR:</b> {e}")
-    msg = "<b>ʙᴇʀʜᴀꜱɪʟ ᴍᴇɴɪɴɢɢᴀʟᴋᴀɴ ᴠᴏɪᴄᴇ ᴄʜᴀᴛ</b>\n"
-    if chat_id:
-        msg += f"<b>ᴄʜᴀᴛ : </b><code>{message.chat.title}</code>"
-    await ky.edit(msg)
+    await client.send(DiscardGroupCall(call=group_call))
+    await ky.edit(f"<emoji id={gagal}>❎</emoji> <b>ᴏʙʀᴏʟᴀɴ sᴜᴀʀᴀ ʙᴇʀʜᴀsɪʟ ᴅɪ ᴍᴀᴛɪᴋᴀɴ</b>\n <emoji id={alasan}>⚠️</emoji><b>Chat</b> : {message.chat.title}")
