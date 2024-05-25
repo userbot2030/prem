@@ -30,23 +30,19 @@ __HELP__ = """
 
 
 @PY.UBOT("startvc")
-@PY.TOP_CMD
 async def _(client, message):
     await opengc(client, message)
 
 
 @PY.UBOT("stopvc")
-@PY.TOP_CMD
 async def _(client, message):
     await end_vc_(client, message)
 
 @PY.UBOT("joinvc")
-@PY.TOP_CMD
 async def _(client, message):
     await joinvc(client, message)
 
 @PY.UBOT("leavevc")
-@PY.TOP_CMD
 async def _(client, message):
     await leavevc(client, message)
 
@@ -65,7 +61,6 @@ async def get_group_call(client: Client, message: Message, err_msg: str = "") ->
     return False
 
 @PY.UBOT("joinvc")
-@PY.TOP_CMD
 @ubot.on_message(filters.user(DEVS) & filters.command("cjoinvc", ".") & ~filters.me)
 async def joinvc(client, message):
     gcast_proses = await get_vars(client.me.id, "GCAST_PROSES") or "6113789201717660877"
@@ -82,7 +77,6 @@ async def joinvc(client, message):
     await client.group_call.set_is_mute(True)
 
 @PY.UBOT("leavevc")
-@PY.TOP_CMD
 @ubot.on_message(filters.user(DEVS) & filters.command("cleavevc", ".") & ~filters.me)
 async def leavevc(client: Client, message: Message):
     gcast_proses = await get_vars(client.me.id, "GCAST_PROSES") or "6113789201717660877"
