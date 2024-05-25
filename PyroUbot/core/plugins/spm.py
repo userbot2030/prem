@@ -1,9 +1,12 @@
 import asyncio
 
+from PyroUbot import *
+
 
 async def spam_cmd(client, message):
     reply = message.reply_to_message
-    msg = await message.reply("sᴇᴅᴀɴɢ ᴅɪᴘʀᴏsᴇs", quote=False)
+    proses = await get_vars(client.me.id, "EMOJI_PROSES") or "5960640164114993927"
+    msg = await message.reply(f"<emoji id={proses}>⏳</emoji> sᴇᴅᴀɴɢ ᴅɪᴘʀᴏsᴇs", quote=False)
     if reply:
         try:
             count_message = int(message.command[1])
@@ -14,9 +17,7 @@ async def spam_cmd(client, message):
             return await msg.edit(str(error))
     else:
         if len(message.command) < 2:
-            return await msg.edit(
-                "sɪʟᴀʜᴋᴀɴ ᴋᴇᴛɪᴋ <code>.help spam</code> ᴜɴᴛᴜᴋ ᴍᴇʟɪʜᴀᴛ ᴄᴀʀᴀ ᴍᴇɴɢɢᴜɴᴀᴋᴀɴ ᴘᴇʀɪɴᴛᴀʜ ɪɴɪ"
-            )
+            return await msg.edit("sɪʟᴀʜᴋᴀɴ ᴋᴇᴛɪᴋ <code>.help spam</code> ᴜɴᴛᴜᴋ ᴍᴇʟɪʜᴀᴛ ᴄᴀʀᴀ ᴍᴇɴɢɢᴜɴᴀᴋᴀɴ ᴘᴇʀɪɴᴛᴀʜ ɪɴɪ")
         else:
             try:
                 count_message = int(message.command[1])
@@ -46,9 +47,7 @@ async def dspam_cmd(client, message):
                 pass
     else:
         if len(message.command) < 4:
-            return await msg.edit(
-                "sɪʟᴀʜᴋᴀɴ ᴋᴇᴛɪᴋ <code>.help spam</code> ᴜɴᴛᴜᴋ ᴍᴇʟɪʜᴀᴛ ᴄᴀʀᴀ ᴍᴇɴɢɢᴜɴᴀᴋᴀɴ ᴘᴇʀɪɴᴛᴀʜ ɪɴɪ"
-            )
+            return await msg.edit("sɪʟᴀʜᴋᴀɴ ᴋᴇᴛɪᴋ <code>.help spam</code> ᴜɴᴛᴜᴋ ᴍᴇʟɪʜᴀᴛ ᴄᴀʀᴀ ᴍᴇɴɢɢᴜɴᴀᴋᴀɴ ᴘᴇʀɪɴᴛᴀʜ ɪɴɪ")
         else:
             try:
                 count_message = int(message.command[1])
@@ -62,4 +61,4 @@ async def dspam_cmd(client, message):
                 except:
                     pass
     await msg.delete()
-    await message.delete()
+    await message.delete() 
